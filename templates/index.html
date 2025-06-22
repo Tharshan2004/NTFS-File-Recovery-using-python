@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTFS File Recovery Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>NTFS File Recovery Tool</h1>
+        <form id="recoveryForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="ntfsImageFile">Select NTFS Image File</label>
+                <input type="file" id="ntfsImageFile" name="ntfs_image_file" required>
+            </div>
+
+            <!-- Removed the file types field as requested -->
+
+            <div class="form-group">
+                <label for="saveFolder">Choose Folder to Save Recovered Files</label>
+                <input type="text" id="saveFolder" name="save_folder" placeholder="Choose folder" required readonly>
+                <button type="button" id="selectFolderButton">Choose Folder</button>
+            </div>
+
+            <button type="submit" id="startRecoveryButton">Start Recovery</button>
+        </form>
+
+        <div id="result" class="result">
+            <p>Total files recovered: <span id="filesRecovered">0</span></p>
+            <p>Total files skipped: <span id="filesSkipped">0</span></p>
+            <p>Total errors: <span id="errors">0</span></p>
+        </div>
+
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 NTFS File Recovery Tool</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
